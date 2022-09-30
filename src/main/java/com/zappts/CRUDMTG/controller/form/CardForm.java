@@ -4,6 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.zappts.CRUDMTG.model.Card;
+import com.zappts.CRUDMTG.model.Language;
 import com.zappts.CRUDMTG.repository.CardRepository;
 
 
@@ -13,8 +14,8 @@ public class CardForm {
 	private String namecard;
 	@NotNull @NotEmpty
 	private String edition;
-	@NotNull //@NotEmpty
-	private Long idlang; 
+	@NotNull
+	private Language language; 
 	@NotNull 
 	private Boolean foil;
 	@NotNull
@@ -32,11 +33,11 @@ public class CardForm {
 	public void setEdition(String edition) {
 		this.edition = edition;
 	}
-	public Long getIdlang() {
-		return idlang;
+	public Language language() {
+		return language;
 	}
-	public void setIdlang(Long idlang) {
-		this.idlang = idlang;
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 	public Boolean getFoil() {
 		return foil;
@@ -52,8 +53,7 @@ public class CardForm {
 	}
 	
 	public Card converter(CardRepository cardRepository) {
-
-		return new Card(namecard,edition,idlang,foil,price);
+		return new Card(namecard,edition,language,foil,price);
 	}
 	
 	

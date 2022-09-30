@@ -4,14 +4,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.zappts.CRUDMTG.model.Card;
+import com.zappts.CRUDMTG.model.Language;
 
 // para controle de qual retorno quero realizar na API
 public class CardDto {
 
-	private Long idcard;
+	private Integer idcard;
 	private String namecard;
 	private String edition;
-	private Long idlang;
+	private Language language;
 	private Boolean foil;
 	private Double price;
 	
@@ -19,13 +20,13 @@ public class CardDto {
 		this.idcard = card.getIdcard();
 		this.namecard = card.getNamecard();
 		this.edition = card.getEdition();
-		this.idlang = card.getIdlang();
+		this.language = card.getLanguage();
 		this.foil = card.getFoil();
 		this.price = card.getPrice();
 
 	}
 	
-	public Long getIdcard() {
+	public Integer getIdcard() {
 		return idcard;
 	}
 	public String getNamecard() {
@@ -34,8 +35,8 @@ public class CardDto {
 	public String getEdition() {
 		return edition;
 	}
-	public Long getIdlang() {
-		return idlang;
+	public Language getLanguage() {
+		return language;
 	}
 	public Boolean getFoil() {
 		return foil;

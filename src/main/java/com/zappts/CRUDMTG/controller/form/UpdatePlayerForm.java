@@ -15,7 +15,7 @@ public class UpdatePlayerForm {
 		return nameplayer;
 	}
 	
-	public Player update(Long idplayer, PlayerRepository playerRepository) {
+	public Player update(Integer idplayer, PlayerRepository playerRepository) {
 		///exemplo para montar edição de listas
 		Player player = playerRepository.getById(idplayer);
 		player.setNameplayer(this.nameplayer);

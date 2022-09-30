@@ -21,7 +21,7 @@ public class PlayerForm {
 	}
 
 	public Player converter(PlayerRepository playerRepository) {
-		
+
 		return new Player(nameplayer);
 	}
 	

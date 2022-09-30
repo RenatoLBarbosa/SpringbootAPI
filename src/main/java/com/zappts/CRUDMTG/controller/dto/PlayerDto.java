@@ -9,7 +9,7 @@ import com.zappts.CRUDMTG.model.Player;
 // para controle de qual retorno quero realizar na API
 public class PlayerDto {
 
-	private Long idplayer;
+	private Integer idplayer;
 	private String nameplayer;
 	
 	public PlayerDto(Player player) {
@@ -27,7 +27,7 @@ public class PlayerDto {
 		this.nameplayer = nameplayer;
 	}
 
-	public Long getIdplayer() {
+	public Integer getIdplayer() {
 		return idplayer;
 	}
 

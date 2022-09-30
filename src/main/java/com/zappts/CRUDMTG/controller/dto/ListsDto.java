@@ -3,16 +3,18 @@ package com.zappts.CRUDMTG.controller.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.zappts.CRUDMTG.model.Card;
 import com.zappts.CRUDMTG.model.Lists;
+import com.zappts.CRUDMTG.model.Player;
 
 // para controle de qual retorno quero realizar na API
 public class ListsDto {
 
-	private Long idlist;
+	private Integer idlist;
 	private String namelist;
 	private int qtdcard;
-	private Long idcard;
-	private Long idplayer;
+	private Card idcard;
+	private Player idplayer;
 	private Double pricecard;
 	
 	public ListsDto(Lists lists) {
@@ -25,7 +27,7 @@ public class ListsDto {
 			
 	}
 	
-	public Long getIdlist() {
+	public Integer getIdlist() {
 		return idlist;
 	}
 	public String getNamelist() {
@@ -34,10 +36,10 @@ public class ListsDto {
 	public int getQtdcard() {
 		return qtdcard;
 	}
-	public Long getIdcard() {
+	public Card getIdcard() {
 		return idcard;
 	}
-	public Long getIdplayer() {
+	public Player getIdplayer() {
 		return idplayer;
 	}
 	public Double getPricecard() {

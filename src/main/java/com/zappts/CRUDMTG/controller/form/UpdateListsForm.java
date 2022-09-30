@@ -4,7 +4,9 @@ package com.zappts.CRUDMTG.controller.form;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.zappts.CRUDMTG.model.Card;
 import com.zappts.CRUDMTG.model.Lists;
+import com.zappts.CRUDMTG.model.Player;
 import com.zappts.CRUDMTG.repository.ListsRepository;
 
 public class UpdateListsForm {
@@ -14,9 +16,9 @@ public class UpdateListsForm {
 	@NotNull
 	private int qtdcard;
 	@NotNull
-	private Long idcard; 
+	private Card idcard; 
 	@NotNull
-	private Long idplayer;
+	private Player idplayer;
 	@NotNull
 	private Double pricecard;
 	
@@ -33,16 +35,16 @@ public class UpdateListsForm {
 	public void setQtdcard(int qtdcard) {
 		this.qtdcard = qtdcard;
 	}
-	public Long getIdplayer() {
+	public Player getIdplayer() {
 		return idplayer;
 	}
-	public void setIdplayer(Long idplayer) {
+	public void setIdplayer(Player idplayer) {
 		this.idplayer = idplayer;
 	}
-	public Long getIdcard() {
+	public Card getIdcard() {
 		return idcard;
 	}
-	public void setIdcard(Long idcard) {
+	public void setIdcard(Card idcard) {
 		this.idcard = idcard;
 	}
 	public Double getPricecard() {
@@ -53,8 +55,7 @@ public class UpdateListsForm {
 	}
 	
 	
-	public Lists update(Long idlist, ListsRepository listsRepository) {
-		///exemplo para montar edição de listas
+	public Lists update(Integer idlist, ListsRepository listsRepository) {
 		Lists lists = listsRepository.getById(idlist);
 		lists.setNamelist(this.namelist);
 		lists.setQtdcard(this.qtdcard);

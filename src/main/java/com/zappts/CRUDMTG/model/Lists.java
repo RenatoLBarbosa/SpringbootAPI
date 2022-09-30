@@ -1,45 +1,65 @@
 package com.zappts.CRUDMTG.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
 public class Lists {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idlist;
+	@Id
+	@GeneratedValue
+	@Column(name="idlist")
+	private Integer idlist;
+	
+	@Column(name="namelist")
 	private String namelist;
+	
+	@Column(name="qtdcard")
 	private int qtdcard;
-	private Long idcard;
-	private Long idplayer;
+	
+	@ManyToOne
+	@JoinColumn(name = "card")
+	@JsonIgnore
+	private Card card;
+	
+	@ManyToOne
+	@JoinColumn(name = "player")
+	@JsonIgnore
+	private Player player;
+	
+	@Column(name="pricecard")
 	private Double pricecard;
 	
 	public Lists() {
 	}
 	
-	public Lists(String namelist, int qtdcard, Long idcard, Long idplayer, Double pricecard) {
+	public Lists(String namelist, int qtdcard, Card idcard, Player idplayer, Double pricecard) {
 		this.namelist = namelist;
 		this.qtdcard = qtdcard;
-		this.idcard = idcard;
-		this.idplayer = idplayer;
+		this.card = idcard;
+		this.player = idplayer;
 		this.pricecard = pricecard;
 	}
 	
 
-	public Long getIdcard() {
-		return idcard;
+	public Card getIdcard() {
+		return card;
 	}
-	public void setIdcard(Long idcard) {
-		this.idcard = idcard;
+	public void setIdcard(Card idcard) {
+		this.card = idcard;
 	}
-	public Long getIdplayer() {
-		return idplayer;
+	public Player getIdplayer() {
+		return player;
 	}
-	public void setIdplayer(Long idplayer) {
-		this.idplayer = idplayer;
+	public void setIdplayer(Player idplayer) {
+		this.player = idplayer;
 	}
 	public String getNamelist() {
 		return namelist;
@@ -53,7 +73,7 @@ public class Lists {
 	public void setQtdcard(int qtdcard) {
 		this.qtdcard = qtdcard;
 	}
-	public Long getIdlist() {
+	public int getIdlist() {
 		return idlist;
 	}
 	public Double getPricecard() {

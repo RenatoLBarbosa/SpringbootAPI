@@ -32,7 +32,7 @@ public class PlayerController {
 	
 	@Autowired
 	private PlayerRepository playerRepository;
-	//pegar igual do language
+	
 	@GetMapping
 	public List<PlayerDto> select(Long idplayer) {
 		
@@ -50,7 +50,7 @@ public class PlayerController {
 		}
 		
 		@GetMapping("/{id}")
-		public ResponseEntity<PlayerDto> detail(@PathVariable("id") Long idplayer) {
+		public ResponseEntity<PlayerDto> detail(@PathVariable("id") Integer idplayer) {
 			
 			Optional<Player> player = playerRepository.findById(idplayer);
 			if(player.isPresent()){
@@ -61,9 +61,8 @@ public class PlayerController {
 		
 		@PutMapping("/{id}")
 		@Transactional
-		public ResponseEntity<PlayerDto> update(@PathVariable("id") Long idplayer, 
+		public ResponseEntity<PlayerDto> update(@PathVariable("id") Integer idplayer, 
 				@RequestBody @Valid UpdatePlayerForm form){
-			// usar como base pra montar o update de list
 			Optional<Player> optional = playerRepository.findById(idplayer);
 			if(optional.isPresent()){
 				Player player = form.update(idplayer, playerRepository);
@@ -74,7 +73,7 @@ public class PlayerController {
 		
 		@DeleteMapping("/{id}")
 		@Transactional
-		public ResponseEntity<PlayerDto> delete(@PathVariable("id") Long idplayer){
+		public ResponseEntity<PlayerDto> delete(@PathVariable("id") Integer idplayer){
 			Optional<Player> optional = playerRepository.findById(idplayer);
 			if(optional.isPresent()){
 				playerRepository.deleteById(idplayer);

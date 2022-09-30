@@ -4,6 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.zappts.CRUDMTG.model.Card;
+import com.zappts.CRUDMTG.model.Language;
 import com.zappts.CRUDMTG.repository.CardRepository;
 
 public class UpdateCardForm {
@@ -13,7 +14,7 @@ public class UpdateCardForm {
 	@NotNull @NotEmpty
 	private String edition;
 	@NotNull 
-	private Long idlang; 
+	private Language language; 
 	@NotNull
 	private Boolean foil;
 	@NotNull
@@ -33,11 +34,11 @@ public class UpdateCardForm {
 		this.edition = edition;
 	}
 
-	public Long getIdlang() {
-		return idlang;
+	public Language getLanguage() {
+		return language;
 	}
-	public void setIdlang(Long idlang) {
-		this.idlang = idlang;
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 	public Boolean getFoil() {
 		return foil;
@@ -51,12 +52,11 @@ public class UpdateCardForm {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public Card update(Long idcard, CardRepository cardRepository) {
-		///exemplo para montar edição de listas
+	public Card update(Integer idcard, CardRepository cardRepository) {
 		Card card = cardRepository.getById(idcard);
 		card.setNamecard(this.namecard);
 		card.setEdition(this.edition);
-		card.setIdlang(idlang);
+		card.setLanguage(language);
 		card.setFoil(this.foil);
 		card.setPrice(this.price);
 		
