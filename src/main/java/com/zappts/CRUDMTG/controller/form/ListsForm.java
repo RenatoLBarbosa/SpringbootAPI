@@ -22,8 +22,6 @@ public class ListsForm {
 	private Card card; 
 	@NotNull 
 	private Player player;
-	@NotNull
-	private Double pricecard;
 	
 
 	public String getNamelist() {
@@ -38,27 +36,23 @@ public class ListsForm {
 	public void setQtdcard(int qtdcard) {
 		this.qtdcard = qtdcard;
 	}
-	public Player getIdplayer() {
+	public Player getPlayer() {
 		return player;
 	}
-	public void setIdplayer(Player idplayer) {
-		this.player = idplayer;
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
-	public Card getIdcard() {
+	public Card getCard() {
 		return card;
 	}
-	public Double getPricecard() {
-		return pricecard;
-	}
-	public void setPricecard(Double pricecard) {
-		this.pricecard = pricecard;
+	public void setCard(Card card) {
+		this.card = card;
 	}
 	
 	
 	public Lists converter(ListsRepository listsRepository) {
-//		System.out.println("idcard"+getIdcard()+" idplayer "+getIdplayer());
-//		new ObjectMapper().readValue(json, Item.class);
-		return new Lists(namelist,qtdcard,card,player, pricecard);
+//		System.out.println("idcard"+this.card+" idplayer "+this.player);
+		return new Lists(namelist,qtdcard,card,player);
 	}
 	
 }

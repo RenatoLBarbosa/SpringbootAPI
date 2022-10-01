@@ -19,8 +19,6 @@ public class UpdateListsForm {
 	private Card idcard; 
 	@NotNull
 	private Player idplayer;
-	@NotNull
-	private Double pricecard;
 	
 
 	public String getNamelist() {
@@ -47,12 +45,6 @@ public class UpdateListsForm {
 	public void setIdcard(Card idcard) {
 		this.idcard = idcard;
 	}
-	public Double getPricecard() {
-		return pricecard;
-	}
-	public void setPricecard(Double pricecard) {
-		this.pricecard = pricecard;
-	}
 	
 	
 	public Lists update(Integer idlist, ListsRepository listsRepository) {
@@ -61,7 +53,6 @@ public class UpdateListsForm {
 		lists.setQtdcard(this.qtdcard);
 		lists.setIdcard(idcard);
 		lists.setIdplayer(idplayer);
-		lists.setPricecard(pricecard);
 		
 		return lists;
 	}

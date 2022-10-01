@@ -25,27 +25,24 @@ public class Lists {
 	private int qtdcard;
 	
 	@ManyToOne
-	@JoinColumn(name = "card")
+	@JoinColumn(name = "idcard")
 	@JsonIgnore
 	private Card card;
 	
 	@ManyToOne
-	@JoinColumn(name = "player")
+	@JoinColumn(name = "idplayer")
 	@JsonIgnore
 	private Player player;
 	
-	@Column(name="pricecard")
-	private Double pricecard;
 	
 	public Lists() {
 	}
 	
-	public Lists(String namelist, int qtdcard, Card idcard, Player idplayer, Double pricecard) {
+	public Lists(String namelist, int qtdcard, Card idcard, Player idplayer) {
 		this.namelist = namelist;
 		this.qtdcard = qtdcard;
 		this.card = idcard;
 		this.player = idplayer;
-		this.pricecard = pricecard;
 	}
 	
 
@@ -73,14 +70,8 @@ public class Lists {
 	public void setQtdcard(int qtdcard) {
 		this.qtdcard = qtdcard;
 	}
-	public int getIdlist() {
+	public Integer getIdlist() {
 		return idlist;
-	}
-	public Double getPricecard() {
-		return pricecard;
-	}
-	public void setPricecard(Double pricecard) {
-		this.pricecard = pricecard;
 	}
 		
 }

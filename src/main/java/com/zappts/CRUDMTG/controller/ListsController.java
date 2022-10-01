@@ -58,10 +58,13 @@ public class ListsController {
 	@Transactional
 	public ResponseEntity<ListsDto> register(@RequestBody ListsForm form) throws IOException {
 		Lists lists = form.converter(listsRepository);
-		Integer idcard = form.getIdcard().getIdcard();
+		
+		Integer idcard = form.getCard().getIdcard();
+		
 		Card card = cardRepository.findById(idcard).orElseThrow(() -> new CardDoesNotExistException(idcard));
 		lists.setIdcard(card);
-		Integer idplayer = form.getIdplayer().getIdplayer();
+		
+		Integer idplayer = form.getPlayer().getIdplayer();
 		Player player = playerRepository.findById(idplayer)
 				.orElseThrow(() -> new PlayerDoesNotExistException(idplayer));
 		lists.setIdplayer(player);

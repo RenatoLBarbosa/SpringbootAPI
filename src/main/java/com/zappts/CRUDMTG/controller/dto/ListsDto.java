@@ -15,7 +15,6 @@ public class ListsDto {
 	private int qtdcard;
 	private Card idcard;
 	private Player idplayer;
-	private Double pricecard;
 	
 	public ListsDto(Lists lists) {
 		this.idlist = lists.getIdlist();
@@ -23,7 +22,6 @@ public class ListsDto {
 		this.qtdcard = lists.getQtdcard();
 		this.idcard = lists.getIdcard();
 		this.idplayer = lists.getIdplayer();
-		this.pricecard = lists.getPricecard();
 			
 	}
 	
@@ -41,9 +39,6 @@ public class ListsDto {
 	}
 	public Player getIdplayer() {
 		return idplayer;
-	}
-	public Double getPricecard() {
-		return pricecard;
 	}
 
 	public static List<ListsDto> converter(List<Lists> lists){
