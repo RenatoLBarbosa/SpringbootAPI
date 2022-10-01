@@ -47,7 +47,7 @@ public class ListsController {
 	private PlayerRepository playerRepository;
 
 	@GetMapping
-	public List<ListsDto> select(Long idlist) {
+	public List<ListsDto> select(Integer idlist)  throws IOException{
 
 		List<Lists> lists = listsRepository.findAll();
 		return ListsDto.converter(lists);
