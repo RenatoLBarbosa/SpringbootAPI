@@ -1,5 +1,4 @@
-# ZapptsChallenge
+# API SPRING BOOT
 
-Desafio proposto pela empresa Zappts.
+Api springboot (CRUD) desenvolvida para estudo.
 
-Documentação disponível na pasta DOCUMENTAÇÂO, favor acessar arquivo "INDEX.html".
