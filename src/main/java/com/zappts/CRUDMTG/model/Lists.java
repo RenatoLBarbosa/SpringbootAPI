@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -27,11 +28,13 @@ public class Lists {
 	@ManyToOne
 	@JoinColumn(name = "idcard")
 	@JsonIgnore
+	@JsonManagedReference
 	private Card card;
 	
 	@ManyToOne
 	@JoinColumn(name = "idplayer")
 	@JsonIgnore
+	@JsonManagedReference
 	private Player player;
 	
 	

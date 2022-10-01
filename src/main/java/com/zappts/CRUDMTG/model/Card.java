@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="card")
 public class Card {
@@ -40,6 +42,7 @@ public class Card {
 	public Double price;
 	
 	@OneToMany(mappedBy="card", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonBackReference
     private List<Lists> lists;
 	
 	

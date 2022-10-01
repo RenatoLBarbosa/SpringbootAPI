@@ -51,7 +51,6 @@ public class ListsForm {
 	
 	
 	public Lists converter(ListsRepository listsRepository) {
-//		System.out.println("idcard"+this.card+" idplayer "+this.player);
 		return new Lists(namelist,qtdcard,card,player);
 	}
 	
