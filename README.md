@@ -5,23 +5,23 @@ Api springboot (CRUD) desenvolvida para estudo.
 API baseada em requisitos propostos por um desafio da empresa Zappts
 
 <h2>🛑 Requisitos</h2>
-[x] Desenvolver um CRUD completo e funcional do problema proposto;
-[x] Deve-se usar Java com Spring;
-[x] Incluir testes unitários cobrindo os requisitos do problema proposto;
-[x] Persistir os dados em um banco de dados de sua escolha;
-[x] Validar inputs;
-[x] Você deve armazenar as seguintes informações: nome da carta, edição, idioma (inglês, português ou
+<p>&#10004; Desenvolver um CRUD completo e funcional do problema proposto; <br>
+<p>&#10004; Deve-se usar Java com Spring;<br>
+<p>&#10004; Incluir testes unitários cobrindo os requisitos do problema proposto;<br>
+<p>&#10004; Persistir os dados em um banco de dados de sua escolha;<br>
+<p>&#10004; Validar inputs;<br>
+<p>&#10004; Você deve armazenar as seguintes informações: nome da carta, edição, idioma (inglês, português ou
 japonês), se ela é foil (laminada) ou não, qual o preço da carta (em reais) e quantas cartas com essas
-características você possui.
-[] O nome da carta sempre deve ser armazenado em português, independente do idioma da carta. [Note
-que é possível ter cartas com os mesmos nomes, porém com características diferentes.]
-[x] O jogador pode criar quantas listas quiser. Em cada lista, o jogador tem a opção de inserir uma nova
+características você possui.<br>
+<p>&#9083; O nome da carta sempre deve ser armazenado em português, independente do idioma da carta. [Note
+que é possível ter cartas com os mesmos nomes, porém com características diferentes.]<br>
+<p>&#10004; O jogador pode criar quantas listas quiser. Em cada lista, o jogador tem a opção de inserir uma nova
 carta, ler todas as cartas da lista, deletar uma carta e atualizar o valor da carta e/ou a quantidade de
-cartas que o jogador possui com aquelas características.
-[] Ao trazer qualquer lista de cartas, deve ser possível escolher se a ordem das cartas é por ordem
-alfabética ou pelo valor.
-[] Os jogadores podem visualizar as listas de outros jogadores, mas só podem fazer qualquer edição nas
-listas de cartas que foram criadas por eles.
+cartas que o jogador possui com aquelas características.<br>
+<p>&#9083; Ao trazer qualquer lista de cartas, deve ser possível escolher se a ordem das cartas é por ordem
+alfabética ou pelo valor.<br>
+<p>&#9083; Os jogadores podem visualizar as listas de outros jogadores, mas só podem fazer qualquer edição nas
+listas de cartas que foram criadas por eles.<br>
 
 Aplicação conta documentação Swagger.
 
