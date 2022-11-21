@@ -8,9 +8,9 @@ import org.springframework.data.repository.query.Param;
 import com.zappts.CRUDMTG.model.Card;
 
 
-public interface CardRepository extends JpaRepository<Card, Integer> {
+public interface CardRepository extends JpaRepository<Card, Long> {
 
-//	List<Card> findByIdcard(Integer idcard);
+//	List<Card> findByIdcard(Long idcard);
 	List<Card> findByNamecard(@Param(value = "namecard") String namecard);
 	List<Card> findByedition(@Param(value = "edition") String edition);
 	List<Card> findByFoil(@Param(value = "foil") Boolean foil);

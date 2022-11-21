@@ -1,12 +1,19 @@
 package com.zappts.CRUDMTG.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -17,19 +24,10 @@ public class Lists {
 	@Id
 	@GeneratedValue
 	@Column(name="idlist")
-	private Integer idlist;
+	private Long idlist;
 	
 	@Column(name="namelist")
 	private String namelist;
-	
-	@Column(name="qtdcard")
-	private int qtdcard;
-	
-	@ManyToOne
-	@JoinColumn(name = "idcard")
-	@JsonIgnore
-	@JsonManagedReference
-	private Card card;
 	
 	@ManyToOne
 	@JoinColumn(name = "idplayer")
@@ -37,44 +35,50 @@ public class Lists {
 	@JsonManagedReference
 	private Player player;
 	
+	@Column(name="pricelist")
+	private double pricelist;
+	
+	@OneToMany(mappedBy = "lists", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonBackReference
+    private List<CardList> cardlist;
 	
 	public Lists() {
+		this.cardlist = new ArrayList<>();
 	}
 	
-	public Lists(String namelist, int qtdcard, Card idcard, Player idplayer) {
+	public Lists(String namelist, Player player, double pricelist) {
 		this.namelist = namelist;
-		this.qtdcard = qtdcard;
-		this.card = idcard;
-		this.player = idplayer;
+		this.player = player;
+		this.pricelist = pricelist;
+		this.cardlist = new ArrayList<>();
 	}
 	
-
-	public Card getIdcard() {
-		return card;
-	}
-	public void setIdcard(Card idcard) {
-		this.card = idcard;
-	}
-	public Player getIdplayer() {
-		return player;
-	}
-	public void setIdplayer(Player idplayer) {
-		this.player = idplayer;
-	}
 	public String getNamelist() {
 		return namelist;
 	}
 	public void setNamelist(String namelist) {
 		this.namelist = namelist;
 	}
-	public int getQtdcard() {
-		return qtdcard;
-	}
-	public void setQtdcard(int qtdcard) {
-		this.qtdcard = qtdcard;
-	}
-	public Integer getIdlist() {
+	public Long getIdlist() {
 		return idlist;
+	}
+	public Player getPlayer() {
+		return player;
+	}
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	public double getPricelist() {
+		return pricelist;
+	}
+	public void setPricelist(double pricelist) {
+		this.pricelist = pricelist;
+	}
+	public List<CardList> getCardlist() {
+		return cardlist;
+	}
+	public void setCardlist(List<CardList> cardlist) {
+		this.cardlist = cardlist;
 	}
 		
 }

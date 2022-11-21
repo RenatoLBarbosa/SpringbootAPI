@@ -1,4 +1,4 @@
-package com.zappts.CRUDMTG.controller.form;
+package com.zappts.CRUDMTG.form.player;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -9,16 +9,22 @@ import com.zappts.CRUDMTG.repository.PlayerRepository;
 public class UpdatePlayerForm {
 
 	@NotNull @NotEmpty
-	private String nameplayer;
+	private String username;
+	@NotNull @NotEmpty
+	private String pwd;
 
-	public String getNameplayer() {
-		return nameplayer;
+	public String getUsername() {
+		return username;
+	}
+	public String getPwd() {
+		return pwd;
 	}
 	
-	public Player update(Integer idplayer, PlayerRepository playerRepository) {
+	public Player update(Long idplayer, PlayerRepository playerRepository) {
 		///exemplo para montar edição de listas
 		Player player = playerRepository.getById(idplayer);
-		player.setNameplayer(this.nameplayer);
+		player.setUsername(this.username);
+		player.setPwd(this.pwd);
 
 		return player;
 	}

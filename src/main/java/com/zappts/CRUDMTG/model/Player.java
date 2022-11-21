@@ -21,10 +21,13 @@ public class Player {
 	@Id
 	@GeneratedValue
 	@Column(name = "idplayer")
-	public Integer idplayer;
+	public Long idplayer;
 
-	@Column(name = "nameplayer")
-	private String nameplayer;
+	@Column(name = "username")
+	private String username;
+	
+	@Column(name = "pwd")
+	private String pwd;
 
 	@OneToMany(mappedBy = "player", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonBackReference
@@ -33,28 +36,31 @@ public class Player {
 	public Player() {
 		this.lists = new ArrayList<>();
 	}
-
-	public Player(String nameplayer) {
-		this.nameplayer = nameplayer;
+	
+	public Player(String username, String pwd) {
+		this.username = username;
+		this.pwd = pwd;
 		this.lists = new ArrayList<>();
 	}
 
-	public String getNameplayer() {
-		return nameplayer;
+	public String getUsername() {
+		return username;
 	}
-
-	public void setNameplayer(String nameplayer) {
-		this.nameplayer = nameplayer;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
-	public Integer getIdplayer() {
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+	public Long getIdplayer() {
 		return idplayer;
 	}
-
 	public List<Lists> getLists() {
 		return lists;
 	}
-
 	public void setLists(List<Lists> lists) {
 		this.lists = lists;
 	}

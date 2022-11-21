@@ -1,7 +1,7 @@
 package com.zappts.CRUDMTG.controller;
 
 import java.io.IOException;
-
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,14 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
-import com.zappts.CRUDMTG.controller.dto.CardDto;
-import com.zappts.CRUDMTG.controller.dto.CardeditionDto;
-import com.zappts.CRUDMTG.controller.dto.CardfoilDto;
-import com.zappts.CRUDMTG.controller.dto.CardnameDto;
-import com.zappts.CRUDMTG.controller.dto.CardpriceDto;
-import com.zappts.CRUDMTG.controller.form.CardForm;
-import com.zappts.CRUDMTG.controller.form.UpdateCardForm;
+import com.zappts.CRUDMTG.dto.card.CardDto;
+import com.zappts.CRUDMTG.dto.card.CardeditionDto;
+import com.zappts.CRUDMTG.dto.card.CardfoilDto;
+import com.zappts.CRUDMTG.dto.card.CardnameDto;
+import com.zappts.CRUDMTG.dto.card.CardpriceDto;
+import com.zappts.CRUDMTG.form.card.CardForm;
+import com.zappts.CRUDMTG.form.card.UpdateCardForm;
 import com.zappts.CRUDMTG.model.Card;
 import com.zappts.CRUDMTG.model.Language;
 import com.zappts.CRUDMTG.repository.CardRepository;
@@ -44,9 +42,10 @@ public class CardController {
 
 	@Autowired
 	private CardRepository cardRepository;
+	private Card card;
 
 	@GetMapping
-	public List<CardDto> select(Integer idcard) throws IOException {
+	public List<CardDto> select(Long idcard) throws IOException {
 
 		List<Card> card = cardRepository.findAll();
 		return CardDto.converter(card);
@@ -60,37 +59,12 @@ public class CardController {
 		Card card = form.converter(cardRepository);
 		cardRepository.save(card);
 
-		return ResponseEntity.notFound().build();
-
-		/*
-		 * OLD idlangV = card.getLanguage();
-		 * 
-		 * 
-		 * URL urllang = new URL("http://localhost:8080/language/"+idlangV);
-		 * 
-		 * HttpURLConnection connectionlang = (HttpURLConnection)
-		 * urllang.openConnection();
-		 * 
-		 * connectionlang.setRequestProperty("accept", "application/json");
-		 * 
-		 * InputStream responseStreamlang = connectionlang.getInputStream();
-		 * 
-		 * ObjectMapper mapper = new ObjectMapper();
-		 * 
-		 * Language lang = mapper.readValue(responseStreamlang, Language.class);
-		 * 
-		 * 
-		 * if (idlangV == lang.idlang) { cardRepository.save(card);
-		 * 
-		 * URI uri =
-		 * uriBuilder.path("/card/{id}").buildAndExpand(card.getIdcard()).toUri();
-		 * return ResponseEntity.created(uri).body(new CardDto(card)); }
-		 * 
-		 */
+		URI uri = uriBuilder.path("/card/{idcard}").buildAndExpand(card.getIdcard()).toUri();
+		return ResponseEntity.created(uri).body(new CardDto(card));
 	}
 
 	@GetMapping("/{idcard}")
-	public ResponseEntity<CardDto> detail(@PathVariable Integer idcard) {
+	public ResponseEntity<CardDto> detail(Long idcard) {
 
 		Optional<Card> card = cardRepository.findById(idcard);
 		if (card.isPresent()) {
@@ -146,48 +120,23 @@ public class CardController {
 
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/{idcard}")
 	@Transactional
-	public ResponseEntity<CardDto> update(@PathVariable("id") Integer idcard, @RequestBody @Valid UpdateCardForm form)
-			throws IOException {
+	public ResponseEntity<CardDto> update(Long idcard, @RequestBody @Valid UpdateCardForm form,
+			UriComponentsBuilder uriBuilder) throws IOException {
 
 		Optional<Card> optional = cardRepository.findById(idcard);
 		if (optional.isPresent()) {
 			Card card = form.update(idcard, cardRepository);
 			cardRepository.save(card);
 		}
-		return ResponseEntity.notFound().build();
-		/*
-		 * 
-		 * idlangV = card.getLanguage();
-		 * 
-		 * URL urllang = new URL("http://localhost:8080/language/" + idlangV);
-		 * 
-		 * HttpURLConnection connectionlang = (HttpURLConnection)
-		 * urllang.openConnection();
-		 * 
-		 * connectionlang.setRequestProperty("accept", "application/json");
-		 * 
-		 * InputStream responseStreamlang = connectionlang.getInputStream();
-		 * 
-		 * // Manually converting the response body InputStream to APOD using Jackson
-		 * ObjectMapper mapper = new ObjectMapper();
-		 * 
-		 * Language lang = mapper.readValue(responseStreamlang, Language.class);
-		 * 
-		 * if (idlangV == lang.idlang) {
-		 * 
-		 * 
-		 * 
-		 * return ResponseEntity.ok(new CardDto(card));
-		 * 
-		 * }
-		 */
+		URI uri = uriBuilder.path("/card/{idcard}").buildAndExpand(card.getIdcard()).toUri();
+		return ResponseEntity.created(uri).body(new CardDto(card));
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{idcard}")
 	@Transactional
-	public ResponseEntity<CardDto> delete(@PathVariable("id") Integer idcard) {
+	public ResponseEntity<CardDto> delete(Long idcard) {
 		Optional<Card> optional = cardRepository.findById(idcard);
 		if (optional.isPresent()) {
 			cardRepository.deleteById(idcard);

@@ -23,7 +23,7 @@ public class Card {
 	@Id
 	@GeneratedValue
 	@Column(name="idcard")
-	public Integer idcard;
+	public Long idcard;
 	
 	@Column(name="namecard")
 	public String namecard;
@@ -41,13 +41,12 @@ public class Card {
 	@Column(name="price")
 	public Double price;
 	
-	@OneToMany(mappedBy="card", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JsonBackReference
-    private List<Lists> lists;
-	
+	@OneToMany(mappedBy = "card", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CardList> cardlist;
 	
 	public Card() {
-		this.lists = new ArrayList<>();
+		this.cardlist = new ArrayList<>();
 	}
 
 	
@@ -57,11 +56,9 @@ public class Card {
 		this.language = language;
 		this.foil = foil;
 		this.price = price;
-		this.lists = new ArrayList<>();
+		this.cardlist = new ArrayList<>();
 	}
 	
-
-
 	public Language getLanguage() {
 		return language;
 	}
@@ -92,15 +89,14 @@ public class Card {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public Integer getIdcard() {
+	public Long getIdcard() {
 		return idcard;
 	}
-	public List<Lists> getLists() {
-		return lists;
+	public List<CardList> getCardlist() {
+		return cardlist;
 	}
-
-	public void setLists(List<Lists> lists) {
-		this.lists = lists;
-	}	
+	public void setCardlist(List<CardList> cardlist) {
+		this.cardlist = cardlist;
+	}
 	
 }

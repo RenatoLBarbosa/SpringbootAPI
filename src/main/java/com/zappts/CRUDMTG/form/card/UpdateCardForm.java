@@ -1,4 +1,4 @@
-package com.zappts.CRUDMTG.controller.form;
+package com.zappts.CRUDMTG.form.card;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -52,7 +52,7 @@ public class UpdateCardForm {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public Card update(Integer idcard, CardRepository cardRepository) {
+	public Card update(Long idcard, CardRepository cardRepository) {
 		Card card = cardRepository.getById(idcard);
 		card.setNamecard(this.namecard);
 		card.setEdition(this.edition);

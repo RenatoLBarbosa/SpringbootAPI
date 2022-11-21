@@ -1,4 +1,4 @@
-package com.zappts.CRUDMTG.controller.form;
+package com.zappts.CRUDMTG.form.card;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

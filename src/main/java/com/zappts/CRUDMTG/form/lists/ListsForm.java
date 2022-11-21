@@ -1,12 +1,8 @@
-package com.zappts.CRUDMTG.controller.form;
+package com.zappts.CRUDMTG.form.lists;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zappts.CRUDMTG.model.Card;
 import com.zappts.CRUDMTG.model.Lists;
 import com.zappts.CRUDMTG.model.Player;
 import com.zappts.CRUDMTG.repository.ListsRepository;
@@ -16,42 +12,32 @@ public class ListsForm {
 
 	@NotNull @NotEmpty
 	private String namelist;
-	@NotNull 
-	private int qtdcard;
-	@NotNull
-	private Card card; 
-	@NotNull 
+	@NotNull @NotEmpty
 	private Player player;
-	
+	@NotNull @NotEmpty
+	private double pricelist;
 
 	public String getNamelist() {
 		return namelist;
 	}
 	public void setNamelist(String namelist) {
 		this.namelist = namelist;
-	}
-	public int getQtdcard() {
-		return qtdcard;
-	}
-	public void setQtdcard(int qtdcard) {
-		this.qtdcard = qtdcard;
-	}
+	}	
 	public Player getPlayer() {
 		return player;
 	}
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-	public Card getCard() {
-		return card;
+	public double getPricelist() {
+		return pricelist;
 	}
-	public void setCard(Card card) {
-		this.card = card;
+	public void setPricelist(double pricelist) {
+		this.pricelist = pricelist;
 	}
-	
 	
 	public Lists converter(ListsRepository listsRepository) {
-		return new Lists(namelist,qtdcard,card,player);
+		return new Lists(namelist,player,pricelist);
 	}
 	
 }
